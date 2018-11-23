@@ -1,0 +1,149 @@
+--
+-- For more information on build.settings see the Corona SDK Build Guide at:
+-- http://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+--
+
+settings =
+{
+	
+	orientation =
+	{
+		-- Supported values for orientation:
+		-- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+
+		default = "portrait",
+		supported = { "portrait", }
+	},
+
+	excludeFiles =
+	{
+		-- Include only the necessary icon files on each platform
+		iphone = { "Icon-*dpi.png", },
+		android = { "Icon.png", "Icon-Small-*.png", "Icon*@2x.png", },
+	},
+
+	plugins = 
+	{
+		-- This section is only required for builds > 2015.2668
+		--["plugin.facebook.v4"] = {publisherId = "com.coronalabs",},
+
+        ["plugin.google.play.services"] =
+        {
+            publisherId = "com.coronalabs",
+            supportedPlatforms = { iphone=true, android=true }
+        },
+	},
+
+	--
+	-- iOS Section
+	--
+	iphone =
+	{
+		plist =
+		{
+			UIStatusBarHidden = false,
+			UIPrerenderedIcon = true, -- set to false for "shine" overlay
+			UIApplicationExitsOnSuspend = false,	-- must be false for single sign-on to
+			FacebookAppID = "263592087358860",	-- replace XXXXXXXXX with your facebook appId
+
+			-- For iOS 9+ only
+			NSAppTransportSecurity = 
+			{
+				NSExceptionDomains = 
+				{
+					["fbcdn.net"] = 
+					{
+						NSIncludesSubdomains = true,
+						NSExceptionRequiresForwardSecrecy = false,
+					},
+					["facebook.com"] = 
+					{
+						NSIncludesSubdomains = true,
+						NSExceptionRequiresForwardSecrecy = false,
+					},
+					["akamaihd.net"] = 
+					{
+						NSIncludesSubdomains = true,
+						NSExceptionRequiresForwardSecrecy = false,
+					},
+				},
+			},
+
+			LSApplicationQueriesSchemes = 
+			{
+				"fb",
+				"fbapi20130214",
+				"fbapi20130410",
+				"fbapi20140410",
+				"fbapi20140116",
+				"fbapi20150313",
+				"fbapi20150629",
+				"fbauth",
+				"fbauth2",
+				"fb-messenger-api20140430",
+			},
+
+
+			CFBundleIconFiles =
+			{
+				"Icon.png",
+				"Icon@2x.png",
+				"Icon-167.png",
+				"Icon-60.png",
+				"Icon-60@2x.png",
+				"Icon-60@3x.png",
+				"Icon-72.png",
+				"Icon-72@2x.png",
+				"Icon-76.png",
+				"Icon-76@2x.png",
+				"Icon-Small.png",
+				"Icon-Small@2x.png",
+				"Icon-Small@3x.png",
+				"Icon-Small-40.png",
+				"Icon-Small-40@2x.png",
+				"Icon-Small-50.png",
+				"Icon-Small-50@2x.png",
+			},
+
+			CFBundleURLTypes =
+			{
+				{
+					CFBundleURLSchemes =
+					{
+						"fb263592087358860",	-- replace XXXXXXXXX with your facebook appId
+					}
+				}
+			},
+			NSLocationWhenInUseUsageDescription = "A description to the user of why you need access to location services.",
+		},
+	},
+	
+	--
+	-- Android Section
+	--
+	android =
+	{
+		usesPermissions =
+		{
+            "android.permission.CAMERA",
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+			"android.permission.INTERNET",
+
+            "android.permission.ACCESS_NETWORK_STATE",
+
+			--Permission to access the GPS.
+			"android.permission.ACCESS_FINE_LOCATION",
+
+			-- Permission to retrieve current location from WiFi or cellular service.
+			"android.permission.ACCESS_COARSE_LOCATION",
+		},
+		-- facebookAppId = "263592087358860",	-- replace XXXXXXXXX with your facebook appId
+	},
+	window =
+	{
+		titleText =
+		{
+			default = "avoidr",
+		},
+	},
+}
