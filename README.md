@@ -35,10 +35,10 @@ Class holder just for explosions.
 My custom implementation for Facebook networking, used on other apps. Not used here.
 
 ## Screenshots
-![Avoidr main menu](screenshots/phone1.png)
+![Avoidr main menu](screenshots/phone1.png) ![Avoidr classic](screenshots/phone4.png)
+![Avoidr classic lose](screenshots/phone3.png) ![Avoidr meteor madness](screenshots/phone2.png)
 
-![Avoidr classic](screenshots/phone4.png)
 
-![Avoidr classic lose](screenshots/phone3.png)
 
-![Avoidr meteor madness](screenshots/phone2.png)
+
+
